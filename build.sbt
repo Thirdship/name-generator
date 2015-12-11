@@ -1,6 +1,6 @@
-name := "names-generator"
+name := "name-generator"
 
-version := "1.0"
+version := "0.1.0"
 
 organization := "com.thirdship"
 
@@ -12,32 +12,10 @@ libraryDependencies ++= Seq(
 
 publishMavenStyle := true
 
-publishTo <<= version { (v: String) =>
-	val nexus = "https://oss.sonatype.org/"
-	if (v.trim.endsWith("SNAPSHOT"))
+publishTo := {
+	val nexus = "http://maven.thirdship.com/"
+	if (version.value.trim.endsWith("SNAPSHOT"))
 		Some("snapshots" at nexus + "content/repositories/snapshots")
 	else
-		Some("releases"  at nexus + "service/local/staging/deploy/maven2")
+		Some("releases"  at nexus + "content/repositories/releases")
 }
-
-pomIncludeRepository := { _ => false }
-
-//pomExtra := <url>http://jsuereth.com/scala-arm</url>
-//	<licenses>
-//		<license>
-//			<name>MIT</name>
-//			<url>http://opensource.org/licenses/MIT</url>
-//			<distribution>repo</distribution>
-//		</license>
-//	</licenses>
-//	<scm>
-//		<url>git@github.com:jsuereth/scala-arm.git</url>
-//		<connection>scm:git:git@github.com:jsuereth/scala-arm.git</connection>
-//	</scm>
-//	<developers>
-//		<developer>
-//			<id>jsuereth</id>
-//			<name>Josh Suereth</name>
-//			<url>http://jsuereth.com</url>
-//		</developer>
-//	</developers>
