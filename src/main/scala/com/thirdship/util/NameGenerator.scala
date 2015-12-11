@@ -1,4 +1,4 @@
-package com.thirdship.util.nameGenerator
+package com.thirdship.util
 
 import scala.util.Random
 
@@ -9,7 +9,7 @@ import scala.util.Random
  * Docker license: Apache v 2.0 (https://github.com/dotcloud/docker/blob/master/LICENSE)
  *
  */
-object namesGenerator {
+object NameGenerator {
 	lazy val random = new Random()
 
 	def apply(): String = apply(random)
