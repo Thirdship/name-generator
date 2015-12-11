@@ -10,10 +10,33 @@ import scala.util.Random
  *
  */
 object NameGenerator {
+
+	/**
+	 * The shared Random for calls to NameGenerator without a seed requested
+	 */
 	lazy val random = new Random()
 
+	/**
+	 * Generates a adjective surname pair as a semi-unique name for things where the name needs to be memorable.
+	 *
+	 * @return a random name of the form adjective_surname
+	 */
 	def apply(): String = apply(random)
+
+	/**
+	 * Generates a adjective surname pair as a semi-unique name for things where the name needs to be memorable.
+	 *
+	 * @param seed is the seed to set the random generator to so that the generator has predictable returns
+	 * @return a (seeded) random name of the form adjective_surname
+	 */
 	def apply(seed: Int): String = apply(new Random(seed))
+
+	/**
+	 * Generates a adjective surname pair as a semi-unique name for things where the name needs to be memorable.
+	 *
+	 * @param rand is the Random object to use
+	 * @return a (potentially) random name of the form adjective_surname
+	 */
 	def apply(rand: Random): String = {
 		val adj  = adjectives(rand.nextInt(adjectives.size))
 		val name = surnames(rand.nextInt(surnames.size))
@@ -25,6 +48,9 @@ object NameGenerator {
 	}
 
 
+	/**
+	 * The list of adjectives to use
+	 */
 	val adjectives = List(
 		"admiring", "adoring", "agitated", "amazing", "angry", "awesome",
 		"backstabbing", "berserk", "big", "boring", "clever", "cocky",
@@ -38,6 +64,9 @@ object NameGenerator {
 		"stupefied", "suspicious", "tender", "thirsty", "tiny", "trusting"
 	)
 
+	/**
+	 * The list of surnames, all notable scientists and hackers.
+	 */
 	val surnames = List(
 		"albattani",	// Muhammad ibn Jābir al-Ḥarrānī al-Battānī was a founding father of astronomy. https://en.wikipedia.org/wiki/Mu%E1%B8%A5ammad_ibn_J%C4%81bir_al-%E1%B8%A4arr%C4%81n%C4%AB_al-Batt%C4%81n%C4%AB
 		"allen",		// Frances E. Allen, became the first female IBM Fellow in 1989. In 2006, she became the first female recipient of the ACM's Turing Award. https://en.wikipedia.org/wiki/Frances_E._Allen
